@@ -17,6 +17,6 @@ class FileNamesUniqueTest {
     void test1() {
 
         assertNotNull(
-                FileNamesUnique.unique(new String[]{"onepiece", "onepiece(1)", "onepiece(2)", "onepiece(3)", "onepiece"}));
+                FileNamesUnique.unique(new String[]{"onepiecee", "onepiece(1)", "onepiece(2)", "onepiece(3)", "onepiece"}));
     }
 }
