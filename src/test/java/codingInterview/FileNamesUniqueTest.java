@@ -14,7 +14,7 @@ class FileNamesUniqueTest {
     }
 
     @org.junit.jupiter.api.Test
-    void test2() {
+    void test1() {
 
         assertNotNull(
                 FileNamesUnique.unique(new String[]{"onepiecee", "onepiece(1)", "onepiece(2)", "onepiece(3)", "onepiece"}));
