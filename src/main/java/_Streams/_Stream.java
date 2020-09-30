@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.OptionalDouble;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class _Stream {
 
@@ -16,25 +16,30 @@ public class _Stream {
                 new Person("Alice", 20, Gender.FEMALE),
                 new Person("Becki", 20, Gender.FEMALE),
                 new Person("Jack", 21, Gender.MALE));
-
+        System.out.println(
+                Stream.of("a", "b", "c")
+                        .flatMap(s -> Stream.of(s + ".", s, s))
+                        .collect(Collectors.toList())
+        );
 
         persons.stream().map(getGender).collect(Collectors.toSet()).forEach(System.out::println);
         persons.stream().map(getNames).collect(Collectors.toSet()).forEach(System.out::println);
-        OptionalDouble avg=persons.stream().mapToInt(p->p.getAge()).average();
-        System.out.println("Average age is: "+avg.getAsDouble());
-        int count=0;
+        OptionalDouble avg = persons.stream().mapToInt(Person::getAge).average();
+        System.out.println("Average age is: " + avg.getAsDouble());
+        int count = 0;
 //       for(Person person:persons){
 //           count +=person.getAge();
 //       }
 //        System.out.println(count);
 
-        count=persons.stream().filter(p->p.getAge()!=null).mapToInt(p->p.getAge()).sum();
+        count = persons.stream().filter(p -> p.getAge() != null).mapToInt(p -> p.getAge()).sum();
         System.out.println(count);
-       count=persons.stream().mapToInt(p->p.getAge()).sum();
+        count = persons.stream().mapToInt(p -> p.getAge()).sum();
         System.out.println(count);
-        String policy="dasdasd";
-        validatePolicy.test(policy);
-        persons.stream().filter(person->person.getName().startsWith("A") &&person.getName().length()>3 ).collect(Collectors.toList()).forEach(x -> System.out.println(x.getName()));
+        String policy = "dasdasd";
+        System.out.println(validatePolicy.test(policy));
+
+        persons.stream().filter(person -> person.getName().startsWith("A") && person.getName().length() > 3).collect(Collectors.toList()).forEach(x -> System.out.println(x.getName()));
     }
 
     private static boolean validatePolicy ( String policy ) {
