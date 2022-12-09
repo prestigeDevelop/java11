@@ -113,11 +113,49 @@ public class ReverseCStyleString {
             result += c;
         }
         LocalTime after = LocalTime.now();
-        int hour=after.getHour() - start.getHour();
-        int minute=after.getMinute() - start.getMinute();
-        int second=after.getSecond() - start.getSecond();
-        int nano=after.getNano() - start.getNano();
-        System.out.println("Time: " + hour +"," +minute+ "," + second + "," + nano);
+        int hour = after.getHour() - start.getHour();
+        int minute = after.getMinute() - start.getMinute();
+        int second = after.getSecond() - start.getSecond();
+        int nano = after.getNano() - start.getNano();
+        System.out.println("Time: " + hour + "," + minute + "," + second + "," + nano);
         //System.out.println(result);
+        System.out.println(FirstReverse("coderbyte").equals("etybredoc"));
+        System.out.println(LongestWord("I love dogs abcdef"));
     }
+
+    public static String FirstReverse(String str) {
+        char[] arr = str.toCharArray();
+        int size = arr.length - 1;
+        for (int i = 0; i < arr.length / 2; i++) {
+            char temp = arr[i];
+            arr[i] = arr[size];
+            arr[size] = temp;
+            size--;
+
+        }
+        return String.valueOf(arr);
+    }
+
+    public static String LongestWord(String sen) {
+        String s = "";
+        String str = "";
+        for (int i = 0; i < sen.length(); i++) {
+
+            char c = sen.charAt(i);
+            if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122)) {
+                str += c;
+            } else {
+                if (str.length() > s.length()) {
+                    s = str;
+                }
+                str = "";
+            }
+        }
+        //if the longest word is the last , return it
+        if (str.length() > s.length()) {
+            return str;
+        }
+        return s;
+    }
+
 }
