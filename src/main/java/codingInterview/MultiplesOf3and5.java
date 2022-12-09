@@ -1,14 +1,19 @@
 package codingInterview;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class MultiplesOf3and5 {
 
     public static void main(String[] args) {
         multiply(10);
-     String s="dasdasdasdasz";
-        System.out.println( findLargestPrimeNumber(100));
+        String s = "dasdasdasdasz";
+        //System.out.println( findLargestPrimeNumber(100));
+        for (int j = 2; j <= 100; j++) {
+            System.out.println(j + " : " + isPrime(j));
+        }
     }
 
     private static int findLargestPrimeNumber(int number){
@@ -23,8 +28,8 @@ public class MultiplesOf3and5 {
     private static boolean isPrime(int i) {
 
         for (int j = 2; j <= i; j++) {
-            if (j==i)continue;
-            if(i%j==0)return false;
+            if (j == i) return true;
+            if (i % j == 0) return false;
         }
         return true;
     }

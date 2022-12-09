@@ -1,15 +1,21 @@
 package general;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
-import java.util.function.Predicate;
+import java.util.*;
 
 public class InputFromUser {
     public static void main(String[] args) {
-        terrestrialAnimal();
-        terrestrialAnimal1();
+        //terrestrialAnimal();
+        //terrestrialAnimal1();
+        Test test = new Test();
+
+//        Arrays.stream(test.getArr()).forEach(System.out::println);
+//        test.getArr()[0]="dadas";
+//        Arrays.stream(test.getArr()).forEach(System.out::println);
+        System.out.println(test.getName());
+        test.getName().replaceFirst("a", "Z");
+        System.out.println(test.getName());
+        Map copy = new LinkedHashMap();
+        copy.put(1, 2);
     }
 
     private static void terrestrialAnimal() {
