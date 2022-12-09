@@ -20,7 +20,7 @@ public class AllUniqueCharacters {
         int[] asciiArray=new int[256];
         for (int i = 0; i < originalSize; i++) {
             //convert from char to ascii code
-            int index = (int) nameChar[i];
+            int index = nameChar[i];
             if(asciiArray[index]==1){
                 char duplicate=(char)index;
                 System.out.println("The duplicate char is :"+duplicate);
