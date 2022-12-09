@@ -2,7 +2,6 @@ package _Arrays;
 
 import javax.swing.*;
 // I dont want this line
-// I dont want this line
 public class ArrayApp {
     public static void main(String[] args) {
         ArrayOperations arrayOperations = new ArrayOperations();
