@@ -10,7 +10,7 @@ public class AllUniqueCharacters {
     }
 
 
-//I dont want this line
+
     private static void IsUniqueCharacters(String name) {
         int originalSize=name.length();
         char[] nameChar=name.toLowerCase().toCharArray();
