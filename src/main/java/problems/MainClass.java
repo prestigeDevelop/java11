@@ -15,11 +15,12 @@ public class MainClass {
         String str = "Zzzzzzbbbccccddehhhhiii";
 
         byte[] bytes = str.getBytes("US-ASCII");
+        char[] chars = str.toCharArray();
         // System.out.println(Arrays.toString(bytes));
         int[] countingArray = new int[128];
         char[] charArray = str.toCharArray();
         for (int i = 0; i < charArray.length; i++) {
-            int index = (int) charArray[i];
+            int index =  charArray[i];
             countingArray[index]++;
         }
         // str.chars().forEach(value -> countingArray[value]++);

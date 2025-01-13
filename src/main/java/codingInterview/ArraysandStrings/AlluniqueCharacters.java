@@ -11,10 +11,15 @@ public class AlluniqueCharacters {
     public static void main(String[] args) {
         System.out.println(isAlUnique("gavg"));
         System.out.println(isAlUniqueMap("gavggdrefa"));
-        System.out.println(removeDuplicateCharacters("ab"));
+        System.out.println(removeDuplicateCharacters("abcnmab"));
         System.out.println(CodelandUsernameValidation("_avis_hai"));
         Stream.of(charCounter("gaavggdrefa")).forEach(System.out::println);
-        System.out.println(Stream.of(charCounter("gaavggdrefa")).flatMap(o -> o.values().stream()).peek(integer -> System.out.println(integer)).max(Comparator.naturalOrder()).get());
+        System.out.println(Stream.of(charCounter("gaavggdrefa")).
+                flatMap(o -> o.values().stream()).
+                peek(integer -> System.out.println(integer)).
+                max(Comparator.naturalOrder()).get());
+
+        isAllUniqueChars("abca");
     }
 
     public static Map<Character, Integer> charCounter(String str) {
@@ -63,16 +68,9 @@ public class AlluniqueCharacters {
 
        private static String removeDuplicateCharacters(String str){
         //aaaa bbbb
+        // abcnmab
            StringBuilder sb=new StringBuilder();
-           for (int i = 1; i <str.length() ; i++) {
-               sb.append(str.charAt(i-1));
-               if (str.charAt(i - 1) == str.charAt(i) && i <= str.length()) {
-                   i++;
-               } else {
-                   sb.append(str.charAt(i));
-               }
 
-           }
 
            return sb.toString();
        }
@@ -87,5 +85,16 @@ public class AlluniqueCharacters {
 
 
         return result == true ? str : "false";
+    }
+    //abca
+    public static boolean isAllUniqueChars(String s){
+       int checker=0;
+
+        for (int i = 0; i < s.length(); i++) {
+            int c= s.charAt(i)-'0';
+            if ((checker & (1 << c)) > 0) return false;
+            checker |= (1 << c);
+        }
+        return true;
     }
 }

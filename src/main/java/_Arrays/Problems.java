@@ -17,13 +17,19 @@ public class Problems implements Cloneable {
         findTheFirstNonRepeatingChar("Zzzzzzbbbccccddehhhhiii");
         System.out.println(isUniqueChars("aAbc"));
         int[] arr = {1, 2, 5, 6, 8, 9, 5, 0, 4, 52, 78, 41, 45, 658, 23, 5, 1, 0, 0, 69, 85, 7, 7, 1, 8};
-        findCombinationToProduceSum(41, arr);
+        int[] arr1 = {1, 2, 3,4,4,1,2};
+        removeDuplicates(arr1,5);
+                findCombinationToProduceSum(41, arr);
         System.out.println(isAllUniqueChar("abs"));
+
+        Double[] doubleArray = Arrays.stream(arr1).mapToObj(Double::valueOf).map(x->x*2.1).toArray(Double[]::new);
+        Arrays.stream(doubleArray).toList().stream().forEach(System.out::println);
     }
 
     // Function to remove duplicate elements
     // This function returns new size of modified
     // array.
+    //{1,2,3,4,1,2,3}
     static int[] removeDuplicates(int arr[], int n) {
         if (arr.length == 0 || arr.length == 1) {
             return arr;
@@ -109,5 +115,34 @@ public class Problems implements Cloneable {
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
+    public String largestNumber(int[] nums) {
+        StringBuilder result = new StringBuilder();
+        // if(nums.length==1)return String.valueOf(nums[0]);
+        //int max=0;
+        // for(int i=0;i<nums.length;i++){
+        //      for (int j = 0; j < nums.length-1; j++) {
+        //    String temp = String.valueOf(nums[j])+String.valueOf(nums[j+1]);
+        //    max = Integer.valueOf(temp);
+        //    temp = String.valueOf(nums[j+1])+String.valueOf(nums[j]);
+        //    if(Integer.valueOf(temp)>max){
+        //     int temp1 = nums[j];
+        //     nums[j]=nums[j+1];
+        //     nums[j+1]=temp1;
+        //    }
+        // }
+        // }
+        String[] numStrs = Arrays.stream(nums)
+                .mapToObj(String::valueOf)
+                .toArray(String[]::new);
 
+        // Sort the strings using a custom comparator
+        Arrays.sort(numStrs, (a, b) -> (b + a).compareTo(a + b));
+        for (String num : numStrs) {
+            result.append(num);
+        }
+        if (result.charAt(0) == '0') {
+            return "0";
+        }
+        return result.toString();
+    }
 }

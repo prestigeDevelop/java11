@@ -121,6 +121,7 @@ public class ReverseCStyleString {
         //System.out.println(result);
         System.out.println(FirstReverse("coderbyte").equals("etybredoc"));
         System.out.println(LongestWord("I love dogs abcdef"));
+        FirstReverse1("abcd");
     }
 
     public static String FirstReverse(String str) {
@@ -157,5 +158,13 @@ public class ReverseCStyleString {
         }
         return s;
     }
+    //abcd
+    public static String FirstReverse1(String str) {
+        String temp="";
 
+        for (int i = str.length()-1; i >=0; i--) {
+            temp+= str.charAt(i);
+        }
+        return temp;
+    }
 }

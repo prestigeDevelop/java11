@@ -1,10 +1,6 @@
-package problems;
+package _LinkedList;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-public class _LinkedList {
+public class LinkedListBasic {
     /**
      * Definition for singly-linked list.
      * public class ListNode {

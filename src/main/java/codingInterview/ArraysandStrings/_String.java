@@ -8,7 +8,18 @@ public class _String {
     public static void main(String[] args) {
 
         System.out.println(isSubString1("waterbottle", "erbottlewat"));
-
+        String s= "abc";
+        String t= "cba";
+        int[] charCounts = new int[26];
+        for (char c : s.toCharArray()) {
+            charCounts[c - 'a']++;
+        }// 1,1,1,0,0,0,0,0,
+        for (char c : t.toCharArray()) {
+            charCounts[c - 'a']--;
+            if(charCounts[c - 'a']<0){
+                System.out.println("false");
+            }
+        }
     }
 
     static void input() {

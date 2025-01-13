@@ -1,4 +1,4 @@
-package oop;
+package leetCode.oop;
 
 public interface Shape {
 

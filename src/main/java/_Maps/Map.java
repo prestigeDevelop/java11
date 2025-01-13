@@ -24,12 +24,24 @@ class _Map {
                 new Order(152568, LocalDateTime.now(), 55, "Alaska"),
                 new Order(1525669, LocalDateTime.now(), 66, "Berlin"));
         orders.put(1, ordersList);
+
         marks.put(100, 90.3);
         marks.put(99, 90.3);
         marks.put(98, 90.3);
         marks.put(66, 90.3);
         marks.put(85, 90.3);
         marks.put(40, 90.3);
+        marks.compute(100,(k,v)->marks.getOrDefault(k,v)==null?90:marks.getOrDefault(k,v)+10);
+        Double grade = marks.computeIfPresent(100, (key, val) -> val + 100);
+        // print new mapping
+        System.out.println("HashMap after operation :\n " + marks);
+        marks.replace(40, 500.6);
+        marks.values().stream().filter(item -> item > 100).forEach(System.out::println);
+        marks.entrySet().stream().forEach(System.out::println);
+
+        marks.compute(40, (k, v) -> (v == null) ? v - 1 : v + 1);
+        //marks.computeIfAbsent(10,  (s -> s),50.36);
+        System.out.println("HashMap after operation :\n " + marks);
 
         storeToOpco.put("GKB", "STSH");
         storeToOpco.put("AKB", "MRTN");
@@ -39,19 +51,9 @@ class _Map {
 
         String opco2 = storeToOpco.computeIfAbsent("PPP", (k) -> getOpcoByStore());
         opco2 = storeToOpco.computeIfAbsent("PPP", (k) -> getOpcoByStore());
+        opco2 = storeToOpco.computeIfAbsent("PPP", (k) -> "NEW VALUE");
 
-// i don't want this line
-        Double grade = marks.computeIfPresent(100, (key, val) -> val + 100);
-        // print new mapping
-        System.out.println("HashMap after operation :\n "
-                + marks);
-        marks.replace(40, 500.6);
-        marks.values().stream().filter(item -> item > 100).forEach(System.out::println);
-        marks.entrySet().stream().forEach(System.out::println);
 
-        marks.compute(40, (k, v) -> (v == null) ? v - 1 : v + 1);
-        //marks.computeIfAbsent(10,  (s -> s),50.36);
-        System.out.println("HashMap after operation :\n " + marks);
         List<Order> r = orders.values().stream().flatMap(i -> i.stream().filter(k -> k.getItems() == 45)).collect(Collectors.toList());
         r.stream().forEach(i -> System.out.println(i));
         Order ordtyu = orders.values().stream().flatMap(i -> i.stream().filter(k -> k.getItems() == 45)).map(l -> {
@@ -60,6 +62,7 @@ class _Map {
         }).findAny().orElse(null);
         System.out.println(ordtyu);
         LocalDateTime today = LocalDateTime.now();
-        System.out.println(today.toString());
+        System.out.println(today);
+        storeToOpco.forEach((k,v)->System.out.println(k+","+v));
     }
 }

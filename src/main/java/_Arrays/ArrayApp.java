@@ -1,12 +1,22 @@
 package _Arrays;
 
 import javax.swing.*;
+import java.util.stream.IntStream;
+
+import static _Arrays.ArrayApp.VillageFestivalNumbers.villageFestivalNumbers;
+
 // I dont want this line
 public class ArrayApp {
     public static void main(String[] args) {
+        for (int i = 0; i < 4; i++) {
+            System.out.println( villageFestivalNumbers(new int[]{1,2,3,4,5},2)[i]);
+        }
+        int[]  input1 = new int[]{0,1,2,3,4,5};
+        input1 =IntStream.of(input1).filter(arr->arr!=0).toArray();
         ArrayOperations arrayOperations = new ArrayOperations();
         int[] array = null;
         Integer storeSize = 0;
+
         boolean isError = true;
         String input = null;
         while (isError) {
@@ -96,5 +106,22 @@ public class ArrayApp {
             }
         }
 
+    }
+    class VillageFestivalNumbers {
+        public static int[] villageFestivalNumbers(int[] numbers, int k) {
+            int sum = IntStream.of(numbers).sum();
+            double average = sum/numbers.length;
+            int[] resultArr = new int[numbers.length];
+            int counter=0;
+            for(int i=0;i<numbers.length;i++){
+                int current = numbers[i];
+                if(current>k && current%k==0){
+                    resultArr[counter]=current;
+                    counter++;
+                }
+
+            }
+            return resultArr;
+        }
     }
 }

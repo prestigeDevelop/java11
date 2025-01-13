@@ -1,9 +1,6 @@
 package codingInterview;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ReplaceSubString {
@@ -19,6 +16,7 @@ public class ReplaceSubString {
 //        map2.put('b',1);
 //        System.out.println(map1.equals(map2));
         //System.out.println(isAnagram("ab c","b ca"));
+        System.out.println("isAnagram");
         System.out.println(isAnagram("cinema", "iceman"));
         System.out.println(isAnagram("Tom Marvolo Riddle", "I am Lord Voldemort"));
         System.out.println(isAnagram("Dave Barry", "Ray Adverb"));
@@ -26,6 +24,22 @@ public class ReplaceSubString {
         System.out.println(isAnagram("astronomer", "Moon starer"));
         System.out.println(isAnagram("abc123", "c3b2a1"));
         System.out.println(isAnagram("abc123", "a11b22c33"));
+        //////////////////////////////
+        System.out.println("isAnagram 1");
+        System.out.println(isAnagram1("cinema", "iceman"));
+        System.out.println(isAnagram1("Tom Marvolo Riddle", "I am Lord Voldemort"));
+        System.out.println(isAnagram1("Dave Barry", "Ray Adverb"));
+        System.out.println(isAnagram1("debit card", "bad credit"));
+        System.out.println(isAnagram1("astronomer", "Moon starer"));
+        System.out.println(isAnagram1("abc123", "c3b2a1"));
+        System.out.println(isAnagram1("abc123", "a11b22c33"));
+        System.out.println("isAnagram 1");
+        System.out.println(isAnagram1("abcd", "dbac"));//should return true
+        System.out.println(isAnagram1("aabb", "bbaa")); // Correctly returns true
+        System.out.println(isAnagram1("aabb", "abab")); // Should return true (valid anagram)
+        System.out.println(isAnagram1("abcd", "efgh")); // Should return false (different characters, but could sum to 0!)
+        System.out.println(isAnagram1("aabbcc", "aaccbb"));
+
     }
 
     private static boolean isAnagram(String phrase1, String phrase2){
@@ -34,7 +48,18 @@ public class ReplaceSubString {
        // map1.keySet().equals(map2.keySet());
         return map1.equals(map2);
     }
-
+    private static boolean isAnagram1(String s1, String s2){
+         if(s1.length()!=s2.length())return false;
+        s1 = s1.replaceAll("\\s", "").toLowerCase();
+        s2 = s2.replaceAll("\\s", "").toLowerCase();
+         int sum=0;
+        for (int i = 0; i < s1.length(); i++) {
+            int index = s1.charAt(i)-'0';
+            int index2 = s2.charAt(i)-'0';
+            sum+=(index-index2);
+        }
+        return sum==0;
+    }
 
     private static Map<Character,Integer> buildMap(String s){
 

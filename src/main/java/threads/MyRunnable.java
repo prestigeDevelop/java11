@@ -6,7 +6,6 @@ public class MyRunnable {
 
 
         Runnable even = () -> {
-
             String threadName = Thread.currentThread().getName();
             System.out.println(threadName);
 
@@ -14,7 +13,6 @@ public class MyRunnable {
         Runnable odd = () -> {
             String threadName = Thread.currentThread().getName();
             System.out.println(threadName);
-
         };
 
         for (int i = 0; i < 10; i++) {
@@ -22,6 +20,7 @@ public class MyRunnable {
             new Thread(odd).start();
             try {
                 Thread.sleep((int) (Math.random() * 1000));
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
